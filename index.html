@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Сергей Шебанов — английский и французский онлайн</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#eef2ff;
+      --bg2:#fff1e6;
+      --ink:rgba(17,24,39,.22);
+      --ink2:rgba(17,24,39,.14);
+
+      --paper:#ffffff;
+      --text:#0F172A;
+      --muted:#475569;
+
+      --orange:#F97316;
+      --violet:#7C3AED;
+
+      --radius2:28px;
+      --shadow: 0 18px 45px rgba(15,23,42,.12);
+      --shadow2: 0 12px 24px rgba(15,23,42,.10);
+      --line: rgba(15,23,42,.10);
+
+      --container: 1180px;
+      --g: 16px;
+
+      --grad: linear-gradient(135deg, #F97316 0%, #FB7185 50%, #7C3AED 100%);
+      --gradSoft: linear-gradient(135deg, rgba(249,115,22,.20) 0%, rgba(251,113,133,.16) 55%, rgba(124,58,237,.18) 100%);
+      --focus: 0 0 0 4px rgba(124,58,237,.18), 0 0 0 1px rgba(124,58,237,.35);
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--paper);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img{ max-width: 100%; height: auto; display: block; }
+    a{ color: inherit; }
+    .container{
+      width: min(var(--container), calc(100% - 2*var(--g)));
+      margin: 0 auto;
+    }
+
+    /* ====== BACKGROUND ====== */
+    .eng-bg{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+      background:
+        radial-gradient(1100px 700px at 18% 18%, rgba(124,58,237,.20), transparent 58%),
+        radial-gradient(1000px 650px at 82% 25%, rgba(249,115,22,.16), transparent 58%),
+        radial-gradient(900px 560px at 55% 85%, rgba(236,72,153,.10), transparent 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+    }
+    .eng-bg::before{
+      content:"";
+      position:absolute;
+      inset:-30%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.55), transparent 45%),
+        radial-gradient(circle at 75% 35%, rgba(255,255,255,.32), transparent 50%),
+        radial-gradient(circle at 55% 90%, rgba(255,255,255,.25), transparent 55%);
+      opacity: .55;
+      transform: rotate(8deg);
+      pointer-events:none;
+    }
+    .eng-bg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to right, rgba(15,23,42,.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15,23,42,.02) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: .55;
+      pointer-events:none;
+      mask: radial-gradient(900px 500px at 50% 35%, black 55%, transparent 78%);
+    }
+
+    .eng-bg .p{
+      position: absolute;
+      left: -35%;
+      top: 50%;
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: .02em;
+      white-space: nowrap;
+      user-select: none;
+      opacity: var(--op, .22);
+      filter: blur(var(--bl, .35px));
+      transform: translateZ(0);
+      will-change: left, transform, opacity;
+      animation:
+        driftX var(--t, 30s) linear infinite,
+        bobY var(--s, 7s) ease-in-out infinite;
+      mix-blend-mode: multiply;
+    }
+
+    @keyframes driftX{
+      0%   { left: -35%; }
+      100% { left: 110%; }
+    }
+    @keyframes bobY{
+      0%,100%{ transform: translateY(0); }
+      50%    { transform: translateY(-18px); }
+    }
+
+    .p1 { top: 78%; font-size: clamp(28px, 5vw, 46px); --t: 36s; --s: 8s;  --op:.22; --bl:.35px; animation-delay: -10s, -1.2s; }
+    .p2 { top: 14%; font-size: clamp(18px, 3.8vw, 32px); --t: 44s; --s: 9s;  --op:.14; --bl:.55px; animation-delay: -26s, -3.4s; }
+    .p3 { top: 62%; font-size: clamp(32px, 6vw, 56px); --t: 40s; --s: 7s;  --op:.20; --bl:.30px; animation-delay: -18s, -2.1s; }
+    .p4 { top: 18%; font-size: clamp(14px, 3vw, 22px); --t: 38s; --s: 10s; --op:.20; --bl:.55px; animation-delay: -6s,  -1.8s; }
+    .p5 { top: 66%; font-size: clamp(16px, 3.2vw, 28px); --t: 34s; --s: 8s;  --op:.22; --bl:.35px; animation-delay: -22s, -4.1s; }
+    .p6 { top: 34%; font-size: clamp(14px, 2.9vw, 20px); --t: 48s; --s: 11s; --op:.16; --bl:.60px; animation-delay: -33s, -2.6s; }
+    .p7 { top: 40%; font-size: clamp(13px, 2.7vw, 18px); --t: 55s; --s: 12s; --op:.15; --bl:.65px; animation-delay: -41s, -3.7s; }
+    .p8 { top: 26%; font-size: clamp(13px, 2.7vw, 18px); --t: 52s; --s: 12s; --op:.15; --bl:.65px; animation-delay: -28s, -1.9s; }
+    .p9 { top: 82%; font-size: clamp(13px, 2.7vw, 18px); --t: 42s; --s: 9s;  --op:.16; --bl:.60px; animation-delay: -15s, -5.0s; }
+    .p10{ top: 10%; font-size: clamp(20px, 4vw, 38px); --t: 60s; --s: 14s; --op:.10; --bl:.75px; animation-delay: -50s, -7s; }
+    .p11{ top: 52%; font-size: clamp(16px, 3.2vw, 26px); --t: 46s; --s: 10s; --op:.12; --bl:.70px; animation-delay: -12s, -2.5s; }
+    .p12{ top: 88%; font-size: clamp(18px, 3.6vw, 30px); --t: 58s; --s: 12s; --op:.11; --bl:.75px; animation-delay: -37s, -6.2s; }
+    .p13{ top: 30%; font-size: clamp(14px, 3vw, 22px); --t: 50s; --s: 11s; --op:.12; --bl:.70px; animation-delay: -24s, -4.8s; }
+    .p14{ top: 70%; font-size: clamp(14px, 3vw, 22px); --t: 54s; --s: 13s; --op:.12; --bl:.70px; animation-delay: -46s, -3.2s; }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior: auto; }
+      .eng-bg .p{ animation: none; left: 10%; }
+      *{ transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+    }
+
+    /* ====== HEADER ====== */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.62);
+      border-bottom: 1px solid rgba(15,23,42,.08);
+    }
+    .header-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 0;
+    }
+    .brand{
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      flex-wrap: wrap;
+      text-decoration: none;
+    }
+    .brand .name{
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: .2px;
+    }
+    .brand .tag{
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    nav{
+      display: none;
+      gap: 14px;
+      align-items: center;
+      white-space: nowrap;
+    }
+    nav a{
+      text-decoration: none;
+      font-size: 13px;
+      color: rgba(15,23,42,.78);
+      padding: 8px 10px;
+      border-radius: 12px;
+      transition: background .18s ease, transform .18s ease;
+    }
+    nav a:hover{
+      background: rgba(255,255,255,.60);
+      transform: translateY(-1px);
+    }
+
+    .header-actions{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.70);
+      color: rgba(15,23,42,.92);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 20px rgba(15,23,42,.08);
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, border-color .18s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn:focus-visible{ outline: none; box-shadow: var(--focus); }
+    .btn:hover{ transform: translateY(-2px); box-shadow: 0 16px 30px rgba(15,23,42,.12); }
+    .btn:active{ transform: translateY(0px) scale(.98); box-shadow: 0 10px 18px rgba(15,23,42,.10); }
+
+    .btn-primary{
+      border-color: rgba(124,58,237,.22);
+      background: var(--grad);
+      color: #fff;
+      box-shadow: 0 16px 35px rgba(124,58,237,.22), 0 12px 24px rgba(249,115,22,.10);
+    }
+    .btn-primary:hover{ filter: brightness(1.02) saturate(1.05); }
+    .btn-ghost{ background: rgba(255,255,255,.62); }
+
+    .menu-toggle{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.70);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(15,23,42,.08);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .menu-toggle:focus-visible{ outline: none; box-shadow: var(--focus); }
+    .menu-toggle:hover{ transform: translateY(-1px); box-shadow: 0 16px 30px rgba(15,23,42,.12); }
+    .burger{ width: 18px; height: 12px; position: relative; }
+    .burger i{
+      position: absolute; left: 0; right: 0; height: 2px;
+      background: rgba(15,23,42,.82);
+      border-radius: 999px;
+    }
+    .burger i:nth-child(1){ top: 0; }
+    .burger i:nth-child(2){ top: 5px; opacity: .78; }
+    .burger i:nth-child(3){ top: 10px; }
+
+    .mobile-nav{
+      display: none;
+      padding: 10px 0 16px;
+    }
+    .mobile-nav.is-open{ display: block; }
+    .mobile-nav .grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .mobile-nav a{
+      text-decoration: none;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.66);
+      font-size: 13px;
+      color: rgba(15,23,42,.86);
+      transition: transform .18s ease, box-shadow .18s ease;
+      box-shadow: 0 10px 20px rgba(15,23,42,.06);
+    }
+    .mobile-nav a:hover{ transform: translateY(-1px); box-shadow: 0 14px 26px rgba(15,23,42,.10); }
+    .mobile-nav a:focus-visible{ outline: none; box-shadow: var(--focus); }
+
+    @media (min-width: 980px){
+      nav{ display: flex; }
+      .menu-toggle{ display: none; }
+      .mobile-nav{ display: none !important; }
+      .brand .name{ font-size: 24px; }
+      .btn{ padding: 12px 16px; }
+    }
+
+    /* ====== SECTIONS ====== */
+    main{ padding-bottom: 60px; }
+    .section{ padding: 56px 0; }
+    .section-title{
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      line-height: 1.05;
+      margin: 0 0 12px;
+      letter-spacing: .2px;
+    }
+    .section-subtitle{
+      margin: 0 0 22px;
+      color: var(--muted);
+      max-width: 74ch;
+      font-size: 16px;
+    }
+
+    .card{
+      background: rgba(255,255,255,.76);
+      border: 1px solid rgba(15,23,42,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      overflow: hidden;
+    }
+    .card-pad{ padding: 18px; }
+
+    .grid{ display: grid; gap: 14px; }
+    .grid-2{ grid-template-columns: 1fr; }
+    .grid-3{ grid-template-columns: 1fr; }
+    .grid-4{ grid-template-columns: 1fr; }
+
+    @media (min-width: 720px){
+      .section{ padding: 72px 0; }
+      .grid-2{ grid-template-columns: 1fr 1fr; }
+      .grid-3{ grid-template-columns: 1fr 1fr 1fr; }
+      .grid-4{ grid-template-columns: 1fr 1fr; }
+      .section-title{ font-size: 40px; }
+    }
+    @media (min-width: 1024px){
+      .grid-4{ grid-template-columns: 1fr 1fr 1fr 1fr; }
+      .section-title{ font-size: 44px; }
+    }
+
+    /* ====== HERO ====== */
+    .hero{ padding: 30px 0 56px; }
+    .hero-wrap{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+    .hero-copy{
+      padding: 18px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.66);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: var(--shadow);
+    }
+    .kicker{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.10);
+      background: var(--gradSoft);
+      color: rgba(15,23,42,.86);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .hero h1{
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1.02;
+      margin: 14px 0 10px;
+      letter-spacing: .2px;
+    }
+    .hero p{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 70ch;
+    }
+    .hero-actions{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: stretch;
+    }
+    .meta-row{
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      color: rgba(15,23,42,.8);
+      font-size: 13px;
+    }
+    .pill{
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.66);
+    }
+    .hero-visual{
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.66);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hero-visual .photo{
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      object-fit: cover;
+    }
+    .hero-visual .caption{
+      padding: 14px 16px 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (min-width: 820px){
+      .hero-wrap{ grid-template-columns: 1.15fr .85fr; gap: 18px; }
+      .hero-actions{ flex-direction: row; align-items: center; }
+      .hero-actions .btn{ width: auto; }
+      .meta-row{ grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ====== Feature checks ====== */
+    .check{ display: flex; gap: 10px; align-items: flex-start; }
+    .check .dot{
+      width: 12px; height: 12px;
+      border-radius: 999px;
+      background: var(--grad);
+      margin-top: 6px;
+      flex: 0 0 auto;
+      box-shadow: 0 8px 18px rgba(124,58,237,.18);
+    }
+    .check .t{ flex: 1; }
+    .small{ font-size: 13px; color: var(--muted); }
+
+    /* ====== Prices ====== */
+    .price-head{ display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .price{ font-weight: 800; letter-spacing: .2px; }
+    .badge{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.62);
+      font-size: 12px;
+      color: rgba(15,23,42,.75);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .card .btn{ width: 100%; margin-top: 12px; }
+
+    /* ====== Steps ====== */
+    .steps{ display: grid; gap: 12px; }
+    .step{
+      padding: 16px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 10px 20px rgba(15,23,42,.06);
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 12px;
+      align-items: start;
+      position: relative;
+      overflow: hidden;
+    }
+    .step::before{
+      content:"";
+      position:absolute;
+      inset: -50%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(249,115,22,.14), transparent 52%),
+        radial-gradient(circle at 80% 30%, rgba(124,58,237,.12), transparent 58%);
+      opacity: .55;
+      pointer-events: none;
+      transform: rotate(10deg);
+    }
+    .step > *{ position: relative; }
+    .num{
+      width: 40px; height: 40px;
+      border-radius: 16px;
+      background: var(--grad);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(124,58,237,.18);
+    }
+    .step h4{ margin: 0 0 6px; font-size: 15px; }
+    .step p{ margin: 0; color: var(--muted); font-size: 14px; }
+    @media (min-width: 980px){
+      .steps{ grid-template-columns: repeat(5, 1fr); gap: 12px; }
+      .step{ grid-template-columns: 1fr; align-items: start; }
+      .num{ margin-bottom: 10px; }
+    }
+
+    /* ====== Accordion ====== */
+    details{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 20px rgba(15,23,42,.06);
+      overflow: hidden;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor: pointer;
+      list-style: none;
+      padding: 16px 16px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker{ display: none; }
+    .chev{
+      width: 28px; height: 28px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(15,23,42,.10);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      transition: transform .18s ease;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+    .details-body{ padding: 0 16px 16px; color: var(--muted); font-size: 14px; }
+
+    /* ====== Video ====== */
+    .video-wrap{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .video-card{
+      padding: 14px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: var(--shadow);
+    }
+    video{
+      width: 100%;
+      border-radius: 20px;
+      background: rgba(15,23,42,.08);
+      display: block;
+    }
+    .quote{
+      padding: 16px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 10px 20px rgba(15,23,42,.06);
+    }
+    .quote p{ margin: 0; color: rgba(15,23,42,.88); }
+    .quote .who{ margin-top: 10px; color: var(--muted); font-size: 13px; font-weight: 800; }
+    @media (min-width: 920px){
+      .video-wrap{ grid-template-columns: 1.15fr .85fr; }
+    }
+
+    /* ====== Slider ====== */
+    .slider{ position: relative; border-radius: var(--radius2); overflow: hidden; }
+    .track{
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 100%;
+      gap: 12px;
+      transition: transform .4s ease;
+      will-change: transform;
+    }
+    .slide{
+      padding: 16px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.76);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: var(--shadow2);
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .slide p{ margin: 0; color: rgba(15,23,42,.88); }
+    .slide .meta{ color: var(--muted); font-size: 13px; font-weight: 800; }
+    .slider-controls{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .icon-btn{
+      width: 44px; height: 44px;
+      border-radius: 18px;
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.70);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(15,23,42,.06);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .icon-btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 28px rgba(15,23,42,.10); }
+    .icon-btn:active{ transform: translateY(0px) scale(.98); }
+    .icon-btn:focus-visible{ outline: none; box-shadow: var(--focus); }
+    .dots{ display: inline-flex; gap: 6px; align-items: center; }
+    .dot{
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(15,23,42,.22);
+      border: 1px solid rgba(255,255,255,.7);
+      cursor: pointer;
+    }
+    .dot.is-active{
+      background: linear-gradient(135deg, rgba(249,115,22,.95), rgba(124,58,237,.95));
+      transform: scale(1.1);
+    }
+    @media (min-width: 820px){
+      .track{ grid-auto-columns: 50%; }
+      .slide{ min-height: 190px; }
+    }
+    @media (min-width: 1100px){
+      .track{ grid-auto-columns: 33.3333%; }
+    }
+
+    /* ====== Footer legal ====== */
+    footer{
+      padding: 34px 0 44px;
+      border-top: 1px solid rgba(15,23,42,.08);
+      background: rgba(255,255,255,.62);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .footer-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .footer-grid a{
+      color: rgba(15,23,42,.88);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(15,23,42,.18);
+    }
+    .footer-grid a:hover{ border-bottom-color: rgba(15,23,42,.40); }
+    .legal{ color: var(--muted); font-size: 13px; max-width: 85ch; }
+    @media (min-width: 860px){
+      .footer-grid{ grid-template-columns: 1.2fr .8fr; }
+    }
+
+    /* ====== Scroll reveal ====== */
+    .reveal{
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.in{ opacity: 1; transform: translateY(0); }
+    .stagger > *{
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .stagger.in > *{ opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce){
+      .reveal, .stagger > *{ opacity: 1 !important; transform: none !important; }
+    }
+
+    .split{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    @media (min-width: 980px){
+      .split{ grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ====== Mobile Optimization ====== */
+    @media (max-width: 480px){
+      .section{ padding: 40px 0; }
+      .hero h1{ font-size: 32px; }
+      .section-title{ font-size: 28px; }
+      .btn{ width: 100%; } /* Кнопки на всю ширину на мобильном */
+      .track{ grid-auto-columns: 100%; }
+      .slider-controls{ justify-content: center; gap: 16px; }
+      .icon-btn{ width: 50px; height: 50px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Flying Letters background -->
+  <div class="eng-bg" aria-hidden="true">
+    <span class="p p1">A</span><span class="p p2">B</span><span class="p p3">C</span>
+    <span class="p p4">learn</span><span class="p p5">speak</span><span class="p p6">travel</span>
+    <span class="p p7">grammar</span><span class="p p8">listening</span><span class="p p9">vocab</span>
+    <span class="p p10">E</span>
+    <span class="p p11">career</span>
+    <span class="p p12">confidence</span>
+    <span class="p p13">practice</span>
+    <span class="p p14">focus</span>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="На верх страницы">
+          <span class="name">Сергей Шебанов</span>
+          <span class="tag">Английский и французский онлайн</span>
+        </a>
+
+        <nav aria-label="Основная навигация">
+          <a href="#about">О преподавателе</a>
+          <a href="#formats">Форматы</a>
+          <a href="#exams">Экзамены</a>
+          <a href="#cases">Кейсы</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">
+            Записаться на диагностику
+          </a>
+          <a class="btn btn-ghost" href="https://t.me/Langtutor9" target="_blank" rel="noopener">
+            Написать в Telegram
+          </a>
+
+          <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+            <span class="burger" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация">
+        <div class="grid">
+          <a href="#about">О преподавателе</a>
+          <a href="#formats">Форматы</a>
+          <a href="#exams">Экзамены</a>
+          <a href="#cases">Кейсы</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contacts">Контакты</a>
+          <a href="https://profi.ru/profile/ShebanovSS/?srsltid=AfmBOooSBvUWKfwQlh7IMHy_XnovTW4t1SGryHFGtoWYOo8DNk7Iu1Fo" target="_blank" rel="noopener">
+            Профиль на Profi.ru
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-wrap">
+          <div class="hero-copy reveal">
+            <div class="kicker">Диагностика • ясный план • прогресс с первой недели</div>
+            <h1>Английский и французский — с человеком, а не с системой</h1>
+            <p>
+              Индивидуальные занятия, пары и мини-группы для взрослых, студентов и школьников.
+              Мягкий и понятный подход, без давления и шаблонов. Подготовка к PTE, B2 First,
+              C1 Advanced, ОГЭ, ЕГЭ, BEC — и уверенная речь для жизни и карьеры.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">
+                Записаться на диагностику
+              </a>
+              <a class="btn" href="#cases">Посмотреть кейсы</a>
+            </div>
+
+            <div class="meta-row">
+              <div class="pill"><strong>Формат:</strong> только онлайн • <strong>часовой пояс:</strong> Москва (UTC+3)</div>
+              <div class="pill"><strong>График:</strong> 12:00–21:00 МСК • <strong>выходной:</strong> воскресенье</div>
+            </div>
+          </div>
+
+          <aside class="hero-visual reveal" aria-label="Фото преподавателя">
+            <img class="photo" src="teacher-hero.jpg" alt="Портрет преподавателя" />
+            <div class="caption">30 лет опыта • более 8000 часов преподавания • 50+ отзывов, рейтинг 4.9 на Profi.ru</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title reveal">Кому подойдёт</h2>
+        <p class="section-subtitle reveal">
+          Если вы хотите системность, живой контакт и спокойную поддержку — без «тренажёрного» подхода и давления.
+        </p>
+
+        <div class="grid grid-3 stagger reveal">
+          <div class="card card-pad">
+            <div class="check"><span class="dot"></span><div class="t"><strong>Не хватает системности</strong><div class="small">Разберём ситуацию, соберём «карту обучения» и выстроим понятный путь.</div></div></div>
+          </div>
+          <div class="card card-pad">
+            <div class="check"><span class="dot"></span><div class="t"><strong>Страх говорить, блоки</strong><div class="small">Мягко снимаем напряжение и аккуратно выстраиваем уверенную речь.</div></div></div>
+          </div>
+          <div class="card card-pad">
+            <div class="check"><span class="dot"></span><div class="t"><strong>Плохой опыт с шаблонными учителями</strong><div class="small">Без «поточного» формата: занятия адаптируются под ваши цели и темп.</div></div></div>
+          </div>
+          <div class="card card-pad">
+            <div class="check"><span class="dot"></span><div class="t"><strong>Нужно для карьеры и жизни</strong><div class="small">Собеседования, общение, поездки, рабочие задачи — под ваш контекст.</div></div></div>
+          </div>
+          <div class="card card-pad">
+            <div class="check"><span class="dot"></span><div class="t"><strong>Подготовка к экзаменам</strong><div class="small">PTE, B2 First, C1 Advanced, ОГЭ, ЕГЭ, BEC — с разбором формата и говорения.</div></div></div>
+          </div>
+          <div class="card card-pad">
+            <div class="check"><span class="dot"></span><div class="t"><strong>Хочется “нормального человека”</strong><div class="small">Эмпатичный преподаватель, который объясняет ясно и спокойно.</div></div></div>
+          </div>
+        </div>
+
+        <div class="split" style="margin-top:16px;">
+          <div class="card card-pad reveal">
+            <h3 style="margin:0 0 8px; font-size:16px;">О преподавателе</h3>
+            <p style="margin:0; color:var(--muted); font-size:14px;">
+              30 лет преподавательского опыта и более 8000 часов практики. Опыт работы в МПГУ (факультет иностранных языков),
+              ВАВТ (Всероссийская академия внешней торговли), профильных гимназиях и лицеях. Подход: индивидуальная диагностика,
+              понятная структура обучения и мягкий стиль с элементами языкового коучинга.
+            </p>
+          </div>
+          <div class="card card-pad reveal">
+            <h3 style="margin:0 0 8px; font-size:16px;">Почему получается прогресс</h3>
+            <p style="margin:0; color:var(--muted); font-size:14px;">
+              Мы работаем не только с языком, но и с состоянием: страхи, блоки, уверенность, голос и внутренняя свобода.
+              Поэтому разговорная речь начинает «собираться» уже на первых занятиях.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="exams">
+      <div class="container">
+        <h2 class="section-title reveal">Подготовка к экзаменам и целевым задачам</h2>
+        <p class="section-subtitle reveal">
+          Экзамены и рабочие задачи требуют точной подготовки: формат, стратегия, говорение, уверенность.
+        </p>
+
+        <div class="grid grid-4 stagger reveal">
+          <div class="card card-pad"><strong>PTE</strong><div class="small">Аудит навыков, говорение по сценариям, отработка в темпе экзамена.</div></div>
+          <div class="card card-pad"><strong>B2 First (FCE)</strong><div class="small">Письмо, чтение, аудирование, говорение — системно и без хаоса.</div></div>
+          <div class="card card-pad"><strong>C1 Advanced (CAE)</strong><div class="small">Структура, лексика, аргументация, speaking — спокойно и точно.</div></div>
+          <div class="card card-pad"><strong>ОГЭ / ЕГЭ / BEC</strong><div class="small">Отработка типовых заданий и уверенная подача на экзамене.</div></div>
+        </div>
+
+        <div class="card card-pad reveal" style="margin-top:14px;">
+          <div class="check">
+            <span class="dot"></span>
+            <div class="t">
+              <strong>Принцип работы</strong>
+              <div class="small">
+                Честно фиксирую уровень и даю реальный план без шаблонных схем. Диагностика бесплатна:
+                обычно 20–40 минут (иногда дольше), и говорите в основном вы — я задаю уточняющие вопросы,
+                чтобы поставить конкретную цель.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="formats">
+      <div class="container">
+        <h2 class="section-title reveal">Форматы и стоимость</h2>
+        <p class="section-subtitle reveal">
+          Можно заниматься индивидуально, в парах или мини-группах. Все варианты — онлайн, под ваши цели и темп.
+        </p>
+
+        <div class="grid grid-3 stagger reveal">
+          <div class="card card-pad">
+            <div class="price-head"><strong>Индивидуально</strong><span class="badge">60 минут</span></div>
+            <div class="price" style="margin-top:10px;">от 2000 ₽</div>
+            <div class="small" style="margin-top:6px;">Максимальная персонализация и быстрый прогресс.</div>
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться</a>
+          </div>
+
+          <div class="card card-pad">
+            <div class="price-head"><strong>Пары</strong><span class="badge">60 минут</span></div>
+            <div class="price" style="margin-top:10px;">от 1500 ₽ / чел</div>
+            <div class="small" style="margin-top:6px;">Подходит друзьям, коллегам, супругам.</div>
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться</a>
+          </div>
+
+          <div class="card card-pad">
+            <div class="price-head"><strong>Мини-группы</strong><span class="badge">60 минут</span></div>
+            <div class="price" style="margin-top:10px;">от 1000 ₽ / чел</div>
+            <div class="small" style="margin-top:6px;">Больше практики речи и поддержка группы.</div>
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться</a>
+          </div>
+
+          <div class="card card-pad">
+            <div class="price-head"><strong>Диагностика</strong><span class="badge">бесплатно</span></div>
+            <div class="price" style="margin-top:10px;">0 ₽</div>
+            <div class="small" style="margin-top:6px;">Понимаем уровень, цель и план — без воды.</div>
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться</a>
+          </div>
+
+          <div class="card card-pad">
+            <div class="price-head"><strong>Экзамены</strong><span class="badge">90 минут</span></div>
+            <div class="price" style="margin-top:10px;">3000 ₽ индивидуально</div>
+            <div class="small" style="margin-top:6px;">В парах: 1800 ₽ / чел. Формат, говорение, стратегия.</div>
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться</a>
+          </div>
+
+          <div class="card card-pad">
+            <div class="price-head"><strong>Деловой английский</strong><span class="badge">60 минут</span></div>
+            <div class="price" style="margin-top:10px;">2500 ₽</div>
+            <div class="small" style="margin-top:6px;">Собеседования, письма, встречи, презентации — под вашу сферу.</div>
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <h2 class="section-title reveal">Как мы работаем</h2>
+        <p class="section-subtitle reveal">
+          Пять шагов, чтобы было понятно, спокойно и результативно — без хаоса.
+        </p>
+
+        <div class="steps stagger reveal">
+          <div class="step"><div class="num">1</div><div><h4>Короткий опрос / переписка</h4><p>Заполнение анкеты или короткий диалог.</p></div></div>
+          <div class="step"><div class="num">2</div><div><h4>Диагностика</h4><p>Обычно 20–40 минут (иногда дольше). Говорите в основном вы.</p></div></div>
+          <div class="step"><div class="num">3</div><div><h4>План обучения</h4><p>Чёткая карта: что делаем, зачем и в какой последовательности.</p></div></div>
+          <div class="step"><div class="num">4</div><div><h4>Уроки: практика и обратная связь</h4><p>Говорение, структура, домашние задания — по делу.</p></div></div>
+          <div class="step"><div class="num">5</div><div><h4>Промежуточная оценка прогресса</h4><p>Фиксируем динамику и корректируем план.</p></div></div>
+        </div>
+
+        <div style="margin-top:14px;" class="reveal">
+          <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">
+            Перейти к анкете и записаться
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cases">
+      <div class="container">
+        <h2 class="section-title reveal">Кейсы</h2>
+        <p class="section-subtitle reveal">
+          Несколько реальных историй: запрос → работа → результат.
+        </p>
+
+        <div class="reveal">
+          <details>
+            <summary>Системное изучение английского. Дмитрий (2017) <span class="chev" aria-hidden="true">⌄</span></summary>
+            <div class="details-body">
+              <p><strong>Запрос:</strong> систематизировать знания, убрать хаос и выстроить последовательное обучение.</p>
+              <p><strong>Как шли занятия:</strong></p>
+              <ul>
+                <li>индивидуальная программа под цели и темп;</li>
+                <li>объяснение через структуру и связи категорий;</li>
+                <li>регулярная практика устной речи;</li>
+                <li>устранение пробелов.</li>
+              </ul>
+              <p><strong>Результат:</strong> заметный рост; прогресс отмечает окружение. В планах — немецкий и латынь.</p>
+              <div class="quote" style="margin-top:10px;">
+                <p>«Сергей Сергеевич — замечательный преподаватель… английский язык кажется лёгкой задачей…»</p>
+                <div class="who">— Дмитрий</div>
+              </div>
+              <a class="btn btn-primary" style="margin-top:12px;" href="https://t.me/Langtutor9" target="_blank" rel="noopener">Хочу системность</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>Кейс: Подготовка к ОГЭ по английскому языку. Александр (2018) <span class="chev" aria-hidden="true">⌄</span></summary>
+            <div class="details-body">
+              <p><strong>Запрос:</strong> системная подготовка к ОГЭ, устранение пробелов и доведение уровня до уверенной пятёрки.</p>
+              <p><strong>Ситуация:</strong> У ученика были пробелы в грамматике и навыках экзаменационного формата. Задача — за 8,5 месяцев выстроить стабильные знания и подготовить ученика к максимальному результату.</p>
+              <p><strong>Как шла работа:</strong></p>
+              <ul>
+                <li>долгосрочная программа подготовки (8,5 месяцев);</li>
+                <li>комплексная проработка всех частей ОГЭ: аудирование, чтение, письмо, говорение;</li>
+                <li>устранение пробелов в грамматике и лексике;</li>
+                <li>системная тренировка навыков экзаменационного письма;</li>
+                <li>поддержка мотивации и выстраивание дисциплины;</li>
+                <li>регулярная обратная связь родителям.</li>
+              </ul>
+              <p><strong>Результат:</strong></p>
+              <ul>
+                 <li>школьная успеваемость: твёрдая пятёрка;</li>
+                 <li>итог ОГЭ: оценка 5;</li>
+                 <li>семья планирует продолжить обучение до ЕГЭ.</li>
+              </ul>
+              <p>Отмечены высокий профессионализм, качественная работа и положительное отношение ученика к занятиям.</p>
+              <div class="quote" style="margin-top:10px;">
+                <p>«За 8,5 месяцев была проведена огромная, качественная работа. Спасибо отличному предметнику и педагогу! Сын ходил на занятия с удовольствием, были закрыты пробелы в знаниях, отработаны необходимые навыки. Итог: в школе твёрдая пятёрка, на ОГЭ – тоже пять. Планируем заниматься дальше и вместе с этим же преподавателем идти на ЕГЭ. Рекомендую и для повышения уровня , и для подготовки к экзаменам!»</p>
+              </div>
+              <a class="btn btn-primary" style="margin-top:12px;" href="https://t.me/Langtutor9" target="_blank" rel="noopener">Обсудить подготовку</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>Французский язык. Работа с Юрием (2016) <span class="chev" aria-hidden="true">⌄</span></summary>
+            <div class="details-body">
+              <p><strong>Запрос:</strong> обучение французскому языку, повышение успеваемости, контроль прогресса и прозрачность занятий.</p>
+              <p><strong>Ситуация:</strong> нужен системный и понятный процесс, постоянный контакт, регулярная обратная связь.</p>
+              <p><strong>Как шла работа:</strong></p>
+              <ul>
+                <li>индивидуальные занятия по авторской программе;</li>
+                <li>подробные отчёты после каждого урока;</li>
+                <li>контроль выполнения домашнего задания;</li>
+                <li>адаптация темпа под ученика;</li>
+                <li>связь с родителями и обсуждение динамики.</li>
+              </ul>
+              <p><strong>Результат:</strong> результат превзошёл ожидания; отмечены качество занятий и надёжный контакт.</p>
+              <a class="btn btn-primary" style="margin-top:12px;" href="https://t.me/Langtutor9" target="_blank" rel="noopener">Обсудить похожую цель</a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="video">
+      <div class="container">
+        <h2 class="section-title reveal">Видеоотзыв / история результата</h2>
+        <p class="section-subtitle reveal">О том, как меняется не только язык, но и уверенность.</p>
+
+        <div class="video-wrap">
+          <div class="video-card reveal">
+            <video controls preload="metadata" poster="video-poster-yuriy.jpg">
+              <source src="case-yuriy-2016.mp4" type="video/mp4" />
+              Ваш браузер не поддерживает видео.
+            </video>
+          </div>
+
+          <div class="quote reveal">
+            <p>
+              Почему это сработало: мы работали не только с языком, но и с состоянием — голосом,
+              уверенностью и внутренней свободой. Когда уходит зажим, речь начинает «собираться» заметно быстрее.
+            </p>
+            <div class="who">— Сергей Шебанов</div>
+
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться на диагностику</a>
+              <!-- Убрана кнопка VK по запросу -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="container">
+        <h2 class="section-title reveal">Отзывы</h2>
+        <p class="section-subtitle reveal">50+ отзывов и рейтинг 4.9 на Profi.ru. Ниже — несколько примеров.</p>
+
+        <div class="slider reveal" aria-label="Слайдер отзывов">
+          <div class="track" id="track">
+            <div class="slide">
+              <p>«Преподаватель замечательный! Подход нашёл моментально: и пошутит, и серьёзно что-то скажет. Знания даёт очень хорошие.»</p>
+              <div class="meta">ОГЭ • 3 месяца • результат: 4</div>
+            </div>
+            <div class="slide">
+              <p>«Он помог мне преодолеть застенчивость… после интенсивного курса я сдал экзамен на 82 балла. Рекомендую.»</p>
+              <div class="meta">Экзамен • результат: 82</div>
+            </div>
+            <div class="slide">
+              <p>«Компетентный, дружелюбный и одновременно требовательный. В школе повысилась успеваемость — только пятёрки.»</p>
+              <div class="meta">Школьный английский • онлайн</div>
+            </div>
+            <div class="slide">
+              <p>«За 8,5 месяцев была проведена огромная, качественная работа. Итог: в школе твёрдая пятёрка, на ОГЭ — тоже пять.»</p>
+              <div class="meta">ОГЭ • результат: 5</div>
+            </div>
+            <div class="slide">
+              <p>«Английский стал логичной задачей, а не “непреодолимой вершиной”. Прогресс замечает окружение.»</p>
+              <div class="meta">Системное обучение</div>
+            </div>
+          </div>
+
+          <div class="slider-controls">
+            <div style="display:flex; gap:10px; align-items:center;">
+              <button class="icon-btn" type="button" id="prev" aria-label="Предыдущий отзыв">←</button>
+              <button class="icon-btn" type="button" id="next" aria-label="Следующий отзыв">→</button>
+            </div>
+            <div class="dots" id="dots" aria-label="Пагинация отзывов"></div>
+            <a class="btn btn-primary" href="https://profi.ru/profile/ShebanovSS/?srsltid=AfmBOooSBvUWKfwQlh7IMHy_XnovTW4t1SGryHFGtoWYOo8DNk7Iu1Fo" target="_blank" rel="noopener">
+              Все отзывы на Profi.ru
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <h2 class="section-title reveal">FAQ</h2>
+        <p class="section-subtitle reveal">Короткие ответы на частые вопросы.</p>
+
+        <div class="reveal">
+          <details>
+            <summary>Сколько нужно занятий? <span class="chev" aria-hidden="true">⌄</span></summary>
+            <div class="details-body">
+              Это зависит от вашего исходного уровня, желаемого результата и того, сколько времени вы готовы уделять языку.
+              Более точно я могу сказать на диагностике — она бесплатная.
+              <div style="margin-top:12px;">
+                <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться на диагностику</a>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Сколько длится диагностика и что на ней происходит? <span class="chev" aria-hidden="true">⌄</span></summary>
+            <div class="details-body">
+              Я не ограничиваю время: однажды диагностика длилась почти полтора часа. Обычно — от 20 до 40 минут.
+              На диагностике говорите в основном вы. Я задаю вопросы, чтобы чётче определить цель, маршрут и подход.
+              <div style="margin-top:12px;">
+                <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться на диагностику</a>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Когда я начну говорить? <span class="chev" aria-hidden="true">⌄</span></summary>
+            <div class="details-body">
+              Уже на первом же занятии.
+              <div style="margin-top:12px;">
+                <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться на диагностику</a>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Работаете ли вы с «нулевиками»? <span class="chev" aria-hidden="true">⌄</span></summary>
+            <div class="details-body">
+              Да. Работаю.
+              <div style="margin-top:12px;">
+                <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться на диагностику</a>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Готовите ли вы к экзаменам? <span class="chev" aria-hidden="true">⌄</span></summary>
+            <div class="details-body">
+              Да. Готовлю к международным и российским экзаменам:
+              <ul>
+                <li>PTE Academic</li>
+                <li>B2 First (FCE)</li>
+                <li>C1 Advanced (CAE)</li>
+                <li>ОГЭ, ЕГЭ</li>
+                <li>BEC (деловой английский)</li>
+              </ul>
+              <div style="margin-top:12px;">
+                <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться на диагностику</a>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Можно ли работать только над одним навыком — например, письмом или говорением? <span class="chev" aria-hidden="true">⌄</span></summary>
+            <div class="details-body">
+              Конечно. Я работаю с конкретным запросом.
+              Если нужно прокачать именно говорение — будем работать точечно над говорением. Если письмо — то над письмом.
+              <div style="margin-top:12px;">
+                <a class="btn btn-primary" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">Записаться на диагностику</a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacts">
+      <div class="container">
+        <h2 class="section-title reveal">Контакты</h2>
+        <p class="section-subtitle reveal">
+          Форм на сайте нет: просто напишите в удобный канал или позвоните — и мы согласуем диагностику.
+        </p>
+
+        <div class="grid grid-2 stagger reveal">
+          <div class="card card-pad">
+            <strong>Кнопки связи</strong>
+            <div class="small" style="margin-top:8px;">Все кнопки кликабельные.</div>
+            <div style="display:grid; gap:10px; margin-top:12px;">
+              <a class="btn btn-primary" href="https://t.me/Langtutor9" target="_blank" rel="noopener">Telegram</a>
+              <a class="btn btn-primary" href="https://wa.me/79037735069" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn btn-primary" href="https://vk.com/serglinguist" target="_blank" rel="noopener">VK</a>
+              <a class="btn btn-primary" href="https://tenchat.ru/english_teach" target="_blank" rel="noopener">TenChat</a>
+              <a class="btn btn-primary" href="https://max.ru/u/f9LHodD0cOKRbGFsdrjoUkTuPx5peaHq-E_PoUem7sCrdnFaQIyGkTAZksI" target="_blank" rel="noopener">Max</a>
+              <a class="btn btn-primary" href="https://rutube.ru/channel/72767972/" target="_blank" rel="noopener">RuTube</a>
+              <a class="btn btn-primary" href="https://www.youtube.com/@SergEnglishTeach" target="_blank" rel="noopener">YouTube</a>
+            </div>
+          </div>
+
+          <div class="card card-pad">
+            <strong>Онлайн-формат и график</strong>
+            <div class="small" style="margin-top:8px;">
+              Онлайн занятия • Москва (UTC+3) • 12:00–21:00 МСК • выходной: воскресенье
+            </div>
+
+            <div style="margin-top:14px;">
+              <div class="check">
+                <span class="dot"></span>
+                <div class="t">
+                  <strong>Самозанятый</strong>
+                  <div class="small">Выдаю чек. По желанию оформляю договор-оферту.</div>
+                </div>
+              </div>
+            </div>
+
+            <a class="btn btn-primary" style="margin-top:12px;" href="https://docs.google.com/forms/d/171493XxXFCCc3MgZU2WJIv6kj_t5cLssLGI84u4vN_0/edit" target="_blank" rel="noopener">
+              Записаться на диагностику
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer aria-label="Юридическая информация">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="font-family:'Cormorant Garamond', serif; font-weight:700; font-size:20px; margin-bottom:6px;">
+            Сергей Шебанов
+          </div>
+          <div class="legal">
+            Онлайн-занятия по английскому и французскому. Самозанятый, выдаю чек. По желанию оформляю договор-оферту.
+          </div>
+        </div>
+        <div class="legal">
+          <div style="margin-bottom:8px;">
+            <a href="privacy.pdf" target="_blank">Политика конфиденциальности</a>
+          </div>
+          <div style="margin-bottom:8px;">
+            <a href="personal_data.pdf" target="_blank">Согласие на обработку ПДн</a>
+          </div>
+
+          <div id="privacy" style="margin-top:12px;">
+            <strong>Политика конфиденциальности (кратко)</strong><br/>
+            Контакты используются только для связи по поводу занятий. Данные не передаются третьим лицам без согласия.
+          </div>
+
+          <div id="consent" style="margin-top:12px;">
+            <strong>Согласие на обработку ПДн (кратко)</strong><br/>
+            Заполняя анкету или связываясь в мессенджерах, вы соглашаетесь на обработку контактных данных для записи и консультации.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    (function(){
+      const btn = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('mobileNav');
+      if(!btn || !nav) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      nav.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if(!a) return;
+        nav.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    })();
+
+    // Scroll reveal (sections + stagger)
+    (function(){
+      const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(reduced) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+        document.querySelectorAll('.stagger').forEach(el => el.classList.add('in'));
+        return;
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if(!entry.isIntersecting) return;
+
+          const el = entry.target;
+          if(el.classList.contains('stagger')) {
+            const kids = Array.from(el.children);
+            kids.forEach((k, i) => {
+              k.style.transitionDelay = `${Math.min(i * 90, 450)}ms`;
+            });
+            el.classList.add('in');
+          } else {
+            el.classList.add('in');
+          }
+          io.unobserve(el);
+        });
+      }, { root: null, threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      document.querySelectorAll('.stagger').forEach(el => io.observe(el));
+    })();
+
+    // Simple reviews slider
+    (function(){
+      const track = document.getElementById('track');
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+      const dotsWrap = document.getElementById('dots');
+      if(!track || !prev || !next || !dotsWrap) return;
+
+      const slides = Array.from(track.children);
+      let index = 0;
+
+      function visibleCount(){
+        const w = window.innerWidth;
+        if(w >= 1100) return 3;
+        if(w >= 820) return 2;
+        return 1;
+      }
+
+      function maxIndex(){
+        return Math.max(0, slides.length - visibleCount());
+      }
+
+      function clampIndex(i){
+        const m = maxIndex();
+        if(i < 0) return m;
+        if(i > m) return 0;
+        return i;
+      }
+
+      function slideWidth(){
+        return track.getBoundingClientRect().width / visibleCount();
+      }
+
+      function renderDots(){
+        dotsWrap.innerHTML = '';
+        const m = maxIndex();
+        for(let i=0; i<=m; i++){
+          const d = document.createElement('button');
+          d.type = 'button';
+          d.className = 'dot' + (i===index ? ' is-active' : '');
+          d.setAttribute('aria-label', `Перейти к отзыву ${i+1}`);
+          d.addEventListener('click', () => { index = i; update(); });
+          dotsWrap.appendChild(d);
+        }
+      }
+
+      function update(){
+        index = clampIndex(index);
+        const x = -(index * slideWidth());
+        track.style.transform = `translate3d(${x}px, 0, 0)`;
+
+        Array.from(dotsWrap.children).forEach((d, i) => {
+          d.classList.toggle('is-active', i === index);
+        });
+      }
+
+      prev.addEventListener('click', () => { index -= 1; update(); });
+      next.addEventListener('click', () => { index += 1; update(); });
+
+      let resizeTimer = null;
+      window.addEventListener('resize', () => {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(() => {
+          index = clampIndex(index);
+          renderDots();
+          update();
+        }, 120);
+      });
+
+      // Swipe
+      let startX = 0;
+      let isDown = false;
+      track.addEventListener('pointerdown', (e) => {
+        isDown = true;
+        startX = e.clientX;
+        track.setPointerCapture(e.pointerId);
+      });
+      track.addEventListener('pointerup', (e) => {
+        if(!isDown) return;
+        isDown = false;
+        const dx = e.clientX - startX;
+        if(Math.abs(dx) < 40) return;
+        index = dx < 0 ? index + 1 : index - 1;
+        update();
+      });
+
+      renderDots();
+      update();
+    })();
+  </script>
+</body>
+</html>
